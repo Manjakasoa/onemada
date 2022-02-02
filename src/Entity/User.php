@@ -35,6 +35,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateAdd;
+
+    /**
+     * @ORM\Column(type="datetime",nullable="true")
+     */
+    private $dateUpd;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,5 +142,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getDateAdd(): ?\DateTimeInterface
+    {
+        return $this->dateAdd;
+    }
+
+    public function setDateAdd(\DateTimeInterface $dateAdd): self
+    {
+        $this->dateAdd = $dateAdd;
+
+        return $this;
+    }
+
+    public function getDateUpd(): ?\DateTimeInterface
+    {
+        return $this->dateUpd;
+    }
+
+    public function setDateUpd(\DateTimeInterface $dateUpd): self
+    {
+        $this->dateUpd = $dateUpd;
+
+        return $this;
     }
 }
